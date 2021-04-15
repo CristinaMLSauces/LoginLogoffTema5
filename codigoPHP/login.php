@@ -2,13 +2,13 @@
 <?php
   
     
-//    if(isset($_REQUEST['registrarse'])){
-//        header('Location: registro.php');
-//        exit;
-//    }
+    if(isset($_REQUEST['registrarse'])){
+        header('Location: registro.php');
+        exit;
+    }
    
     require_once '../core/210322ValidacionFormularios.php';                     //Incluimos la librería de validación para comprobar los campos del formulario
-    require_once "../config/configDBPDO_CASA.php";                              //Incluimos el archivo confDBPDO.php para poder acceder al valor de las constantes de los distintos valores de la conexión 
+    require_once "../config/configDBPDO.php";                              //Incluimos el archivo confDBPDO.php para poder acceder al valor de las constantes de los distintos valores de la conexión 
 
     $entradaOK = true;              
     define("OBLIGATORIO", 1); 
@@ -99,12 +99,12 @@
             exit;
             
             
-        }catch(PDOException $excepcion){
-            $errorExcepcion = $excepcion->getCode();//Almacenamos el código del error de la excepción en la variable $errorExcepcion
-            $mensajeExcepcion = $excepcion->getMessage();//Almacenamos el mensaje de la excepción en la variable $mensajeExcepcion
+        }catch(PDOException $e){
+            $error = $e->getCode();                                             //guardamos en la variable error el error que salta
+            $mensaje = $e->getMessage();                                        //guardamos en la variable mensaje el mensaje del error que salta
 
-            echo "<span style='color: red;'>Error: </span>".$mensajeExcepcion."<br>";//Mostramos el mensaje de la excepción
-            echo "<span style='color: red;'>Código del error: </span>".$errorExcepcion;//Mostramos el código de la excepción
+            echo "ERROR $error";                                                //Mostramos el error
+            echo "<p style='background-color: coral>Se ha producido un error! .$mensaje</p>"; //Mostramos el mensaje de error
         } finally {
            unset($miDB);                                                        //cerramos la conexion con la base de datos
         }
@@ -133,7 +133,6 @@
                         <input type="text" name="CodUsuario" value=
                         "<?php if($aErrores['CodUsuario'] == NULL && isset($_REQUEST['CodUsuario'])){ echo $_REQUEST['CodUsuario'];}?>">
                         <?php if ($aErrores['CodUsuario'] != null) { echo "  ⚠️".$aErrores['CodUsuario']."<br>"; } ?> <br>
-                        
                     </div>    
                         <br><br>
                     <div class="input-container">
@@ -144,14 +143,14 @@
                        
                     </div> 
                         <br><br>
-
-                        <input type="submit" value="Iniciar Sesion" name="aceptar" class="enviar">
+                        <input type="submit" value="INICIAR SESION" name="aceptar" class="enviar"> <br><br>
+                        <input type="submit" value="REGISTRATE" name="registrarse" class="registro">
                     
                 </form>
             </div>
          <footer>
             <p class="footer"> 2020-21 I.E.S. Los sauces. ©Todos los derechos reservados. Cristina Manjon Lacalle <p> 
-            <a href="https://github.com/CristinaMLSauces" target="_blank"> <img src="../images/git.png" class="logogit" /> </a>
+            <a href="https://github.com/CristinaMLSauces/LoginLogoffTema5.git" target="_blank"> <img src="../images/git.png" class="logogit" /> </a>
         </footer>
 
     </body>
