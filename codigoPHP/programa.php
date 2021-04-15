@@ -8,24 +8,24 @@
     }
 
 
-    if(isset($_REQUEST['detalles'])){
+    if(isset($_REQUEST['detalles'])){                                           //Si se le ha dado al boton detalles
         header('Location: detalle.php');
         exit;
     }
-//    
-//    if(isset($_REQUEST['editarPerfil'])){
-//        header('Location: editarPerfil.php');
-//        exit;
-//    }
-//    
-    if(isset($_REQUEST['salir'])){
+    
+    if(isset($_REQUEST['editarPerfil'])){                                       //Si se le ha dado al boton de editar perfil
+        header('Location: editarperfil.php');
+        exit;
+    }
+    
+    if(isset($_REQUEST['salir'])){                                              //Si se le ha dado a cerrar sesion
         session_destroy();
         header('Location: login.php');
         exit;
     }
     
     require_once '../core/210322ValidacionFormularios.php';                     //Incluimos la librería de validación para comprobar los campos del formulario
-    require_once "../config/configDBPDO.php";                              //Incluimos el archivo confDBPDO.php para poder acceder al valor de las constantes de los distintos valores de la conexión 
+    require_once "../config/configDBPDO_CASA.php";                              //Incluimos el archivo confDBPDO.php para poder acceder al valor de las constantes de los distintos valores de la conexión 
 
     try{
         $miDB = new PDO(HOST,USER,PASSWORD);                                    //Establecer una conexión con la base de datos 
@@ -65,16 +65,17 @@
 </head>
 <body>
     <header>
-        <h1>Estas dentro. Bienvenido</h1>
-            <form name="formulario" action="<?php echo $_SERVER['PHP_SELF'];?>" method="post" ">
-            <?php
+        <?php
                 if($imagenUsuario!=null){
-                echo '<img style="margin-rigth: 2px;" src = "data:image/png;base64,' . base64_encode($imagenUsuario) . '" width = "50px"/>';
+                echo '<img src = "data:image/png;base64,' . base64_encode($imagenUsuario) . '" width = "180px"/>';
                 }
                 ?>
-<!--            <input type="submit" value="Editar Perfil" name="editarPerfil" id="editarPerfil">-->
-                <input class="botones" type="submit" value="detalles" name="detalles" id="detalles">
-                <input class="botones" type="submit" value="Cerrar Sesion" name="salir" id="cerrarSesion">
+        <h1>¡Estas dentro. Bienvenido/a!</h1>
+            <form name="formulario" action="<?php echo $_SERVER['PHP_SELF'];?>" method="post" ">
+            
+                <input class="botones" type="submit" value="EDITAR PERFIL" name="editarPerfil" id="editarPerfil">
+                <input class="botones" type="submit" value="DETALLES" name="detalles" id="detalles">
+                <input class="botones" type="submit" value="CERRAR SESION" name="salir" id="cerrarSesion">
             </form>
     </header>
         <div class="info">

@@ -10,8 +10,7 @@ h1{
     color: white;
     font-family: 'Handlee', cursive;
 }
-
-h3{
+   h3{
     font-size: 50px;
     font-family: 'Handlee', cursive;
     margin-left: 20%;
@@ -38,7 +37,7 @@ h3{
     transition: all 0.5s ease-in-out;
 }
 .input-container input{ 
-    font-family: 'Comfortaa', cursive;
+   font-family: 'Comfortaa', cursive;
      border:0;
      border-bottom:2px solid #555;  
      background:transparent;
@@ -51,6 +50,7 @@ h3{
 .input-container input:focus{ 
   outline: none
 }
+
 
 .aceptar{
     background-color:#c3d39f ;
@@ -75,6 +75,7 @@ h3{
     color: white;
     padding: 5%;
 }
+
     /*-----------------------------footer------------------------*/
 
 .footer{
@@ -100,4 +101,3 @@ h3{
     display: flex;
     
 }
-

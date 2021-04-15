@@ -14,7 +14,7 @@ h1{
 h3{
     font-size: 50px;
     font-family: 'Handlee', cursive;
-    margin-left: 20%;
+    margin-left: 15%;
     margin-top: 15%;
 }
 
@@ -22,7 +22,7 @@ h3{
         border:3px solid #555;  
 	position:absolute;
 	left:50%;
-	top:50%;
+	top:52%;
 	transform: translate(-50%,-50%);
 	border-radius:3px;
 	padding:30px;
@@ -47,33 +47,79 @@ h3{
      font-size:16px;
      color:rgb(34, 35, 85);
      background: rgba(80, 150, 204, 0.411);
+    
+}
+.input-container:nth-of-type(1) input{ 
+
+     background: #D3CAC4;
+}
+.input-container:nth-of-type(3) input{ 
+     background: #D3CAC4;
+}
+.input-container:nth-of-type(4) input{ 
+     background: #D3CAC4;
+}
+.imagen input{ 
+    border:0;
+    background-color: transparent;
+    padding:8px 0 0 0;
 }
 .input-container input:focus{ 
   outline: none
 }
 
-.aceptar{
-    background-color:#c3d39f ;
-    margin:4%;
+.contraseña{
+    width:50%;
+    background-color: #D6A37A;
+    margin-left: 1%;
+    margin-bottom: 3%;
     border: 2px solid #6B98A5;
     border-radius: 6px;
-    font-size: 20px;
+    font-size: 15px;
     font-family: 'Handlee', cursive;
     color: white;
-    padding: 5%;
+    padding: 3%;
+    font-weight: bold;
+}
+
+
+.aceptar{
+     width:25%;
+    background-color: #c3d39f;
+    margin:3%;
+    border: 2px solid #6B98A5;
+    border-radius: 6px;
+    font-size: 25px;
+    font-family: 'Handlee', cursive;
+    color: white;
+    padding: 2%;
     font-weight: bold;
 }
 
 .cancelar{
+     width:25%;
     font-weight: bold;
-    background-color:#f2b2b2 ;
-    margin:4%;
+    background-color: #f2b2b2;
+    margin:3%;
+    border: 2px solid #6B98A5;
+    border-radius: 6px;
+    font-size: 25px;
+    font-family: 'Handlee', cursive;
+    color: white;
+    padding: 2%;
+}
+
+.eliminar{
+    margin-top: 15px;
+    margin-left: 30%;
+    font-weight: bold;
+    background-color: #C06266;
     border: 2px solid #6B98A5;
     border-radius: 6px;
     font-size: 20px;
     font-family: 'Handlee', cursive;
     color: white;
-    padding: 5%;
+    padding: 1%;
 }
     /*-----------------------------footer------------------------*/
 

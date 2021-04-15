@@ -18,12 +18,19 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link href="../webroot/css/estilo2.css" rel="stylesheet" type="text/css"/>
+        <link href="../webroot/css/estilo4.css" rel="stylesheet" type="text/css"/>
         <link rel="icon" type="image/png" sizes="16x16" href="../images/favicon-16x16.png"/>
         <title>LoginLogoff</title>
     </head>
     <body>
-        <h1>Estas viendo las variables superglobales.</h1>
+        <header>
+            <form  name="formulario" action="<?php echo $_SERVER['PHP_SELF'];?>" method="post">
+                <button type="submit" name='volver' value="volver" class="volver">VOLVER</button>
+            </form>
+            <h1>Estas viendo las variables superglobales.</h1>
+
+        </header>
+        
         <h3>$_COOKIE</h3>
         <div>  
         <?php
