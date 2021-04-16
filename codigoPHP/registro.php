@@ -6,7 +6,7 @@
     }
  
     require_once '../core/210322ValidacionFormularios.php';                     //Incluimos la librería de validación para comprobar los campos del formulario
-    require_once "../config/configDBPDO_CASA.php";                                   //Incluimos el archivo confDBPDO.php para poder acceder al valor de las constantes de los distintos valores 
+    require_once "../config/configDBPDO.php";                                   //Incluimos el archivo confDBPDO.php para poder acceder al valor de las constantes de los distintos valores 
 
     define("OBLIGATORIO", 1);                                                   //Declaramos una constante de obligatorio para utilizar mas adelante en la validacion
     $entradaOK = true;

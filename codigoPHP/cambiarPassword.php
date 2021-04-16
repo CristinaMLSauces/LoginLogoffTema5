@@ -14,7 +14,7 @@
 
     
     require_once '../core/210322ValidacionFormularios.php';                     //Incluimos la librería de validación para comprobar los campos del formulario
-    require_once "../config/configDBPDO_CASA.php";                              //Incluimos el archivo confDBPDO.php para poder acceder al valor de las constantes de los distintos valores de la conexión 
+    require_once "../config/configDBPDO.php";                              //Incluimos el archivo confDBPDO.php para poder acceder al valor de las constantes de los distintos valores de la conexión 
 
 
     define("OBLIGATORIO", 1);

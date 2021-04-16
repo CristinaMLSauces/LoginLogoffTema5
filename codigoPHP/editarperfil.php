@@ -19,7 +19,32 @@
    
 
     require_once '../core/210322ValidacionFormularios.php';                     //Incluimos la librería de validación para comprobar los campos del formulario
-    require_once "../config/configDBPDO_CASA.php";                              //Incluimos el archivo confDBPDO.php para poder acceder al valor de las constantes de los distintos valores de la conexión 
+    require_once "../config/configDBPDO.php";                              //Incluimos el archivo confDBPDO.php para poder acceder al valor de las constantes de los distintos valores de la conexión 
+    
+    if(isset($_REQUEST['eliminarCuenta'])){                                     //Si el usuario le ha dado al boton de eliminar cuenta
+        try{
+            $miDB = new PDO(HOST,USER,PASSWORD);                                //Establecer una conexión con la base de datos 
+            $miDB->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);     //La clase PDO permite definir la fórmula que usará cuando se produzca un error, utilizando el atributo PDO::ATTR_ERRMODE
+
+            $sql = "DELETE from T01_Usuario where T01_CodUsuario=:CodUsuario";  //Guardamos la consulta para borrar toda la fila con ese cod usuario
+            $consulta = $miDB->prepare($sql);                                   //Preparamos la consulta
+            $parametros = [":CodUsuario" => $_SESSION['usuarioDAW207LoginLogoffTema5']];  //guardamos en parametros cual es la fila que coincide con ese codusuario
+
+            $consulta->execute($parametros);                                    //Ejecutamos la consulta
+            session_destroy();                                                  //Destruimos la sesion
+            header('Location: login.php');                                      //Y volvemos al login
+            exit;
+            
+    }catch(PDOException $e){
+            $error = $e->getCode();                                             //guardamos en la variable error el error que salta
+            $mensaje = $e->getMessage();                                        //guardamos en la variable mensaje el mensaje del error que salta
+
+            echo "ERROR $error";                                                //Mostramos el error
+            echo "<p style='background-color: coral>Se ha producido un error! .$mensaje</p>"; //Mostramos el mensaje de error
+        } finally {
+           unset($miDB); //cerramos la conexion con la base de datos
+        }
+    }
     
     try{
         $miDB = new PDO(HOST,USER,PASSWORD);                                    //Establecer una conexión con la base de datos 
@@ -51,40 +76,17 @@
     $aErrores = ['errorDescripcion' => null,                                    //Declaro el array errores y lo inicializo a null
                  'errorImagen' => null];
  
-    if(isset($_REQUEST['eliminarCuenta'])){                                     //Si el usuario le ha dado al boton de eliminar cuenta
-        try{
-            $miDB = new PDO(HOST,USER,PASSWORD);                                //Establecer una conexión con la base de datos 
-            $miDB->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);     //La clase PDO permite definir la fórmula que usará cuando se produzca un error, utilizando el atributo PDO::ATTR_ERRMODE
 
-            $sql = "DELETE from T01_Usuario where T01_CodUsuario=:CodUsuario";  //Guardamos la consulta para borrar toda la fila con ese cod usuario
-            $consulta = $miDB->prepare($sql);                                   //Preparamos la consulta
-            $parametros = [":CodUsuario" => $_SESSION['usuarioDAW207LoginLogoffTema5']];  //guardamos en parametros cual es la fila que coincide con ese codusuario
-
-            $consulta->execute($parametros);                                    //Ejecutamos la consulta
-            session_destroy();                                                  //Destruimos la sesion
-            header('Location: login.php');                                      //Y volvemos al login
-            exit;
-            
-    }catch(PDOException $e){
-            $error = $e->getCode();                                             //guardamos en la variable error el error que salta
-            $mensaje = $e->getMessage();                                        //guardamos en la variable mensaje el mensaje del error que salta
-
-            echo "ERROR $error";                                                //Mostramos el error
-            echo "<p style='background-color: coral>Se ha producido un error! .$mensaje</p>"; //Mostramos el mensaje de error
-        } finally {
-           unset($miDB); //cerramos la conexion con la base de datos
-        }
-    }
     
     if(isset($_REQUEST['aceptar'])){                                            //Comprobamos que el usuario haya enviado el formulario
         $aErrores['errorDescripcion']= validacionFormularios::comprobarAlfaNumerico($_REQUEST['Descripcion'], 255, 3, OBLIGATORIO);
 
-        if($_FILES['imagen']['tmp_name']!=null){
-            $tipo = $_FILES['imagen']['type'];
-            if (($tipo == "image/gif") || ($tipo == "image/jpeg") || ($tipo == "image/jpg") || ($tipo == "image/png")){
-                $imagenSubida = file_get_contents($_FILES['imagen']['tmp_name']);
+        if($_FILES['imagen']['tmp_name']!=null){                                //Si en la variable superglobal $File no esta vacia y tiene una imagen con nombre entonces
+            $tipo = $_FILES['imagen']['type'];                                  //Nos devuelve los tipos de imagenes que hay
+            if (($tipo == "image/gif") || ($tipo == "image/jpeg") || ($tipo == "image/jpg") || ($tipo == "image/png")){  //Validamos los tipos de imagen que voy a permitir
+                $imagenSubida = file_get_contents($_FILES['imagen']['tmp_name']);  //Guardamos en la variable la imagen subida
             }else{
-                $aErrores['errorImagen']="Formato incorrecto";
+                $aErrores['errorImagen']="Formato incorrecto";                  //Si hubo algun error me guarda el mensaje en el array errores
             }
         }
                                                                                 
@@ -160,7 +162,7 @@
                 <div class="input-container">           
                     <label>Descripción del usuario</label>   
                     <input type="text" name="Descripcion" value="<?php echo(isset($_REQUEST['Descripcion']) ? $_REQUEST['Descripcion'] : $descripcionUsuario); ?>">
-                         <?php if ($aErrores['Descripcion'] != null) { echo "  ⚠️".$aErrores['Descripcion']."<br>"; } ?> <br>
+                         
                     <br><br>
                 </div>
                 
