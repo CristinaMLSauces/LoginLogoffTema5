@@ -110,7 +110,7 @@
 <head>
     <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link href="../webroot/css/estilo.css" rel="stylesheet">
+        <link href="../webroot/css/estilo2.css" rel="stylesheet">
         <link rel="icon" type="image/png" sizes="16x16" href="../images/favicon-16x16.png">
     <title>Registro</title>
 </head>
@@ -118,46 +118,51 @@
     <header>
         <h1>Login Logoff Tema 5</h1>
     </header>
+    <h3>¡Registrate<br> ahora!</h3>
+        <div class="box">
              <form name="formulario" action="<?php echo $_SERVER['PHP_SELF'];?>" method="post" >
-                    <h3>Registrate</h3>
+  
                 <br>
-                <div>
+                <div class="input-container">   
                     <label>Usuario</label>	
                         <input type="text" name="CodUsuario" value=
                         "<?php if($aErrores['CodUsuario'] == NULL && isset($_REQUEST['CodUsuario'])){ echo $_REQUEST['CodUsuario'];}?>">
                          <?php if ($aErrores['CodUsuario'] != null) { echo "  ⚠️".$aErrores['CodUsuario']."<br>"; } ?> <br>
                     
                         <br><br>
-                        
-                    <label>Descripcion del usuario</label>   
+                </div>
+                <div class="input-container">           
+                    <label>Descripción del usuario</label>   
                     <input type="text" name="Descripcion" value=
                         "<?php if($aErrores['Descripcion'] == NULL && isset($_REQUEST['Descripcion'])){ echo $_REQUEST['Descripcion'];}?>">
                          <?php if ($aErrores['Descripcion'] != null) { echo "  ⚠️".$aErrores['Descripcion']."<br>"; } ?> <br>
                     
                         <br><br>
-                        
+                </div>
+                <div class="input-container">          
                     <label>Contraseña</label>   
                     <input type="Password" name="Password" value=
                         "<?php if($aErrores['Password'] == NULL && isset($_REQUEST['Password'])){ echo $_REQUEST['Password'];}?>">
                          <?php if ($aErrores['Password'] != null) { echo "  ⚠️".$aErrores['Password']."<br>"; } ?> <br>
                     
                         <br><br> 
-                   
+                </div>
+                <div class="input-container">     
                     <label>Repite la contraseña</label>   
                     <input type="Password" name="PasswordRepetida" value=
                         "<?php if($aErrores['PasswordRepetida'] == NULL && isset($_REQUEST['PasswordRepetida'])){ echo $_REQUEST['PasswordRepetida'];}?>">
                          <?php if ($aErrores['PasswordRepetida'] != null) { echo "  ⚠️".$aErrores['PasswordRepetida']."<br>"; } ?> <br>
                     
                         <br><br> 
-                
                 </div>
+                
                 <div>
-                    <input type="submit" value="Aceptar" name="aceptar" >
-                    <input type="submit" value="Cancelar" name="cancelar">
+                    <input type="submit" value="Aceptar" name="aceptar" class="aceptar">
+                    <input type="submit" value="Cancelar" name="cancelar" class="cancelar">
                 </div>
             </form>
-       
-         <footer>
+        </div>
+        <footer>
             <p class="footer"> 2020-21 I.E.S. Los sauces. ©Todos los derechos reservados. Cristina Manjon Lacalle <p> 
             <a href="https://github.com/CristinaMLSauces/LoginLogoffTema5.git" target="_blank"> <img src="../images/git.png" class="logogit" /> </a>
         </footer>

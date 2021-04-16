@@ -1,60 +1,46 @@
-@import url('https://fonts.googleapis.com/css2?family=Indie+Flower&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Handlee&display=swap'); 
-
+@import url('https://fonts.googleapis.com/css2?family=Handlee&display=swap');
    /*---------------------Titulo------------------------*/
 h1{
     font-size: 40px;
     color: white;
      font-family: 'Handlee', cursive;
-  
+     margin-left: 25%;
 }
-img{
-    border-radius: 80%;
+div{
+  padding: 1%;
+  font-size: 16px;
+  display:flex;
+  flex-direction: column;
+  align-items: stretch;
+  margin-left: 30%;
+}
+h3{
+   padding: 6px;;
+   text-align: center;
+   background-color: #B9DCD3;
+   border-radius: 50px 50px 50px 50px;
 }
 header{
     background-color: #5FA0B3;
     padding: 10px;
     display:flex;
     flex-direction:row;
-    justify-content:space-around;
-}
-form{
-    display:flex;
-    align-items:baseline;
+    justify-content:flex-start;
 
-}
-.botones:nth-of-type(1){
-    background-color: #D6A37A;
-}
-.botones:nth-of-type(3){
-    background-color: #f2b2b2;
-}
-.botones:nth-of-type(2){
-    background-color: #c3d39f;
-}
-.botones{
+    
+}.volver{
+    
+    background-color:#f2b2b2;
     font-weight: bold;
-   margin-top: 20px;
+    margin-top: 20px;
     border: 2px solid #6B98A5;
     border-radius: 6px;
-    font-size: 14px;
+    font-size: 18px;
     font-family: 'Handlee', cursive;
     color: white;
-    padding: 8%;
-}
-.botones:focus{
-    border:0;
-}
-
-.info{
-    margin-left: 30%;
-    margin-top: 4%;
-    font-family: 'Indie Flower', cursive;
-    display: inline-block;
-    font-size: 30px;
+    padding: 30%;
     
 }
-
 
     /*-----------------------------footer------------------------*/
 
