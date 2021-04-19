@@ -1,6 +1,6 @@
 <?php
      
-       require_once "../config/configDBPDO_1&1.php"; //Cogemos el archivo con los parametros de conexion segun estemos en casa en desarollo o explotacion caragara un archivo diferente
+       require_once "../config/configDBPDO.php"; //Cogemos el archivo con los parametros de conexion segun estemos en casa en desarollo o explotacion caragara un archivo diferente
         
             try {
                 //Establecer una conexión con la base de datos 
@@ -33,7 +33,7 @@
                 
                 echo "<h3> <span style='color: green;'>"."Tablas creadas correctamente</span></h3>";//Si no se ha producido ningún error nos mostrará "Conexión establecida con éxito"
             }
-            catch (PDOException $excepcion) {
+            catch (PDOException $e) {
                 $error = $e->getCode();                                         //guardamos en la variable error el error que salta
                 $mensaje = $e->getMessage();                                    //guardamos en la variable mensaje el mensaje del error que salta
                 
